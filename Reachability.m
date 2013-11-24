@@ -100,6 +100,15 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
 #pragma mark - Class Constructor Methods
 
++(Reachability *)reachabilityWithURL:(NSURL*)url
+{
+    if([url host] != nil) {
+        return [Reachability reachabilityWithHostname:[url host]];
+    }
+    
+    return nil;
+}
+
 +(Reachability*)reachabilityWithHostName:(NSString*)hostname
 {
     return [Reachability reachabilityWithHostname:hostname];
